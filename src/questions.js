@@ -111,7 +111,7 @@ const questions = [
         id: 1,
         question:
           "Which among the following box/boxes is kept exactly between Box D and Box B?",
-        answers: [" G", " E", " B", "C", "B", "A", "F", "C", " none of these"],
+        answers: ["G ,E", "B,C", "B,A", "F,C", " none of these"],
       },
       {
         id: 2,
@@ -153,11 +153,11 @@ const questions = [
         question:
           "Profit obtained by A from scheme S1 is what percent of profit obtained by C from scheme S2.",
         answers: [
-          "346 *7/ 9 % ",
-          "347 *8 /9 % ",
-          "356* 7 /9 % ",
-          "345 *4/ 9 % ",
-          "355 *5 /9 % ",
+          "346 (7/ 9) % ",
+          "347 (8 /9) % ",
+          "356 (7 /9 ) % ",
+          "345 (4/ 9 )% ",
+          "355 (5 /9) % ",
         ],
       },
       {
@@ -193,7 +193,7 @@ const questions = [
       {
         id: 2,
         question: "291, 147, 75, 39, 22, 12, 7.5",
-        answers: ["22", "291", "147", "75", 7.5],
+        answers: ["22", "291", "147", "75", "7.5"],
       },
       {
         id: 3,
@@ -297,7 +297,7 @@ const questions = [
       {
         id: 1,
         question:
-          "An article is sold at Rs. 1500 after allowing discount of 12.5% on Marked price. Quantity I –Rs.550 Quantity II –Mark price of article.",
+          "An article is sold at Rs. 1500 after allowing discount of 12.5% on Marked price. Quantity I –Rs.550 , Quantity II –Mark price of article.",
         answers: [
           "Quantity I > Quantity II",
           "Quantity I < Quantity II ",
