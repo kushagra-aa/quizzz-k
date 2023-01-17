@@ -48,26 +48,14 @@ const QuestionCard = ({
     <div className="question-card">
       <div className="question-container">
         <h2>
-          question:{paraId}-{question.id}
+          paragraph:
+          <span>{paraId}</span> question:
+          <span>{question.id}</span>
         </h2>
         <h1>{question.question}</h1>
       </div>
       <div className="answers-container">
         <p>select one answer</p>
-        <div className="buttons">
-          <button
-            disabled={paraId === 1 && question.id === 1}
-            onClick={handlePrev}
-            id="btn-prev"
-          >
-            previous {question.id === 1 && !isNoPara ? "paragraph" : "question"}
-          </button>
-          <button onClick={handleNext} id="btn-nxt">
-            {totalParas === paraId && totalQuestions === question.id
-              ? "submit"
-              : "next"}
-          </button>
-        </div>
         <div
           onClick={() => handleSelected(1)}
           id="a1"
@@ -99,6 +87,28 @@ const QuestionCard = ({
         >
           <span>{""}</span>
           <p>{question.answers[3]}</p>
+        </div>
+        <div
+          onClick={() => handleSelected(5)}
+          id="a5"
+          className={`answer ${selected === 5 && "selected"}`}
+        >
+          <span>{""}</span>
+          <p>{question.answers[4]}</p>
+        </div>
+        <div className="buttons">
+          <button
+            disabled={paraId === 1 && question.id === 1}
+            onClick={handlePrev}
+            id="btn-prev"
+          >
+            previous {question.id === 1 && !isNoPara ? "paragraph" : "question"}
+          </button>
+          <button onClick={handleNext} id="btn-nxt">
+            {totalParas === paraId && totalQuestions === question.id
+              ? "submit"
+              : "next"}
+          </button>
         </div>
       </div>
     </div>

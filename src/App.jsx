@@ -16,7 +16,12 @@ function App() {
   };
 
   const handleSubmit = () => {
-    set(ref(db, `${name}/`), selectedAnswers)
+    set(ref(db, `${name.name}-${name.phone}/`), {
+      name: name.name,
+      phone: name.phone,
+      email: name.email,
+      answers: selectedAnswers,
+    })
       .then(() => setMessage("Response accepted!"))
       .catch((error) => setMessage("Something went wrong, Try Again!"));
     console.log("SUBMITTT!");
@@ -28,7 +33,7 @@ function App() {
     <main>
       {message.length ? (
         <h1 className="message">{message}</h1>
-      ) : name.length ? (
+      ) : name.phone !== undefined ? (
         <ParagraphCard
           question={questions[currentPara]}
           selectedAnswers={selectedAnswers}
