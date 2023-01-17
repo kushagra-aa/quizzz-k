@@ -9,6 +9,8 @@ const QuestionCard = ({
   submitQuiz,
   totalQuestions,
   totalParas,
+  isNoPara,
+  handleSubmit,
 }) => {
   const [selected, setSelected] = useState();
 
@@ -27,7 +29,7 @@ const QuestionCard = ({
       ...curr,
       [`${paraId}_${question.id}`]: selected,
     }));
-    if (totalParas === paraId && totalQuestions === question.id) submitQuiz();
+    if (totalParas === paraId && totalQuestions === question.id) handleSubmit();
     else changeQuestion(1);
   };
 
@@ -58,7 +60,7 @@ const QuestionCard = ({
             onClick={handlePrev}
             id="btn-prev"
           >
-            previous {question.id === 1 ? "paragraph" : "question"}
+            previous {question.id === 1 && !isNoPara ? "paragraph" : "question"}
           </button>
           <button onClick={handleNext} id="btn-nxt">
             {totalParas === paraId && totalQuestions === question.id

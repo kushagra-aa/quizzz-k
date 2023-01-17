@@ -36,8 +36,12 @@ button:disabled:hover {
   @apply !bg-opacity-60;
 }
 
+.message {
+  @apply text-4xl text-yellow font-bold;
+}
+
 .para-card {
-  @apply flex flex-col bg-black w-9/12 h-full;
+  @apply flex flex-col bg-black w-10/12 h-full;
 }
 .para-card > .para-head {
   @apply h-full;
