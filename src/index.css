@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Raleway", sans-serif;
+  user-select: none;
+}
+
+* > div {
+  @apply rounded-sm;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  @apply flex flex-col items-center justify-center bg-dark text-yellow;
+}
+
+button {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  transition: all 0.1s linear;
+  @apply bg-white px-2 py-1 font-semibold text-dark uppercase rounded-sm;
+}
+button:hover {
+  @apply !bg-opacity-80;
+}
+button:disabled {
+  cursor: not-allowed;
+  @apply !bg-opacity-60;
+}
+button:disabled:hover {
+  @apply !bg-opacity-60;
+}
+.question-card {
+  @apply flex flex-col bg-black w-10/12 h-3/4;
+}
+.question-container {
+  @apply bg-pink w-full h-1/4 px-4 py-2 flex flex-col gap-2;
+}
+.question-container > h2 {
+  @apply text-2xl text-dark font-bold uppercase;
+}
+.question-container > h1 {
+  @apply text-3xl text-dark font-normal;
+}
+.name-card {
+  @apply items-center;
+}
+.name-card > .question-container {
+  @apply self-start items-center justify-center;
+}
+.name-container {
+  @apply flex flex-col items-center gap-3 p-6 w-1/2 h-full justify-center;
+}
+.name-container > input[type="text"] {
+  @apply p-1 text-black w-1/2;
+}
+.name-container > input[type="text"]:focus,
+.name-container > input[type="text"]:active,
+.name-container > button:focus {
+  @apply outline outline-pink;
+}
+.name-container > button {
+  @apply w-1/4;
+}
+.answers-container {
+  display: grid;
+  grid-template:
+    "p btns"
+    "a1 a2"
+    "a1 a2"
+    "a3 a4"
+    "a3 a4";
+  @apply p-6 gap-2 h-full items-center;
+}
+
+.answers-container > p {
+  grid-area: p;
+  @apply text-left capitalize text-xl font-normal;
+}
+
+.buttons {
+  @apply justify-self-end flex gap-2 w-full;
+}
+.buttons > button {
+  @apply bg-white text-pink w-full;
+}
+
+.answers-container > .answer {
+  cursor: pointer;
+  transition: all 0.1s linear;
+  @apply flex h-full items-center gap-3 text-lg border border-yellow text-white py-0.5 px-2 font-normal;
+}
+.answers-container > .answer:hover {
+  @apply border border-yellow text-white bg-yellow bg-opacity-30;
+}
+.answers-container > .answer > span {
+  @apply bg-white h-[20px] w-[20px] rounded-full relative;
+}
+.answers-container > .answer > span::before {
+  content: " ";
+  transform: translate(-50%, -50%);
+  @apply bg-dark rounded-full h-[14px] w-[14px] absolute top-1/2 left-1/2 opacity-0;
+}
+.answers-container > .answer.selected {
+  @apply bg-yellow text-dark;
+}
+.answers-container > .answer.selected:hover {
+  @apply border border-yellow text-white bg-yellow bg-opacity-90;
+}
+.answers-container > .answer.selected > span::before {
+  @apply opacity-100;
+}
+.answers-container > #a1 {
+  grid-area: a1;
+}
+.answers-container > #a2 {
+  grid-area: a2;
+}
+.answers-container > #a3 {
+  grid-area: a3;
+}
+.answers-container > #a4 {
+  grid-area: a4;
+}
+@media (max-width: 768px) {
+  .question-container {
+    @apply h-auto py-4;
+  }
+  .answers-container {
+    @apply flex flex-col items-start;
+  }
+  .answers-container > .answer {
+    @apply w-full;
+  }
+  .name-container {
+    @apply w-full;
+  }
+}
