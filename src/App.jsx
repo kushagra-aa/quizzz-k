@@ -1,58 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import NameCard from "./components/NameCard";
-import QuestionCard from "./components/QuestionCard";
+import ParagraphCard from "./components/ParagraphCard";
+import questions from "./questions.js";
 
 function App() {
-  const [questions, setQuestions] = useState([
-    {
-      id: 1,
-      question: "what is not name of a bird",
-      answers: ["cuku", "kingfisher", "pigeon", "parrot"],
-    },
-    {
-      id: 2,
-      question: "what is not name of a bird2",
-      answers: ["cuku", "kingfisher", "pigeon", "parrot"],
-    },
-    {
-      id: 3,
-      question: "what is not name of a bird3",
-      answers: ["cuku", "kingfisher", "pigeon", "parrot"],
-    },
-    {
-      id: 4,
-      question: "what is not name of a bird4",
-      answers: ["cuku", "kingfisher", "pigeon", "parrot"],
-    },
-    {
-      id: 5,
-      question: "what is not name of a bird5",
-      answers: ["cuku", "kingfisher", "pigeon", "parrot"],
-    },
-    {
-      id: 6,
-      question: "what is not name of a bird6",
-      answers: ["cuku", "kingfisher", "pigeon", "parrot"],
-    },
-  ]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [name, setName] = useState("");
+  const [currentPara, setCurrentPara] = useState(0);
+  const [name, setName] = useState("kushagra");
 
-  const changeQuestion = (by) => {
-    setCurrentQuestion((cur) => cur + by);
+  const changePara = (by) => {
+    if (currentPara + by < questions.length) setCurrentPara((cur) => cur + by);
   };
+
+  useEffect(() => {}, [currentPara]);
 
   return (
     <main>
       {name.length ? (
-        <QuestionCard
-          question={questions[currentQuestion]}
+        <ParagraphCard
+          question={questions[currentPara]}
           selectedAnswers={selectedAnswers}
           setSelectedAnswers={setSelectedAnswers}
-          changeQuestion={changeQuestion}
-          totalQuestions={questions.length}
+          changePara={changePara}
+          totalParas={questions.length}
         />
       ) : (
         <NameCard setName={setName} />

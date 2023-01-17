@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
 const QuestionCard = ({
+  paraId,
   question,
   selectedAnswers,
   setSelectedAnswers,
   changeQuestion,
   submitQuiz,
   totalQuestions,
+  totalParas,
 }) => {
   const [selected, setSelected] = useState(selectedAnswers[question.id] ?? 0);
 
@@ -22,28 +24,32 @@ const QuestionCard = ({
   };
   const handleNext = () => {
     setAnswer(selected);
-    if (totalQuestions === question.id) submitQuiz();
+    if (totalParas === paraId && totalQuestions === question.id) submitQuiz();
     else changeQuestion(1);
   };
 
   return (
     <div className="question-card">
       <div className="question-container">
-        <h2>question:{question.id}</h2>
+        <h2>
+          question:{paraId}-{question.id}
+        </h2>
         <h1>{question.question}</h1>
       </div>
       <div className="answers-container">
-        <p>select one</p>
+        <p>select one answer</p>
         <div className="buttons">
           <button
-            disabled={question.id === 1}
+            disabled={paraId === 1 && question.id === 1}
             onClick={handlePrev}
             id="btn-prev"
           >
-            previous
+            previous {question.id === 1 ? "paragraph" : "question"}
           </button>
           <button onClick={handleNext} id="btn-nxt">
-            {totalQuestions === question.id ? "submit" : "next"}
+            {totalParas === paraId && totalQuestions === question.id
+              ? "submit"
+              : "next"}
           </button>
         </div>
         <div
