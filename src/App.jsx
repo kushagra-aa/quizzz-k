@@ -7,7 +7,7 @@ import questions from "./questions.js";
 function App() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [currentPara, setCurrentPara] = useState(0);
-  const [name, setName] = useState("kushagra");
+  const [name, setName] = useState("");
 
   const changePara = (by) => {
     if (currentPara + by < questions.length) setCurrentPara((cur) => cur + by);

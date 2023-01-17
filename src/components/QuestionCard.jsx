@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const QuestionCard = ({
   paraId,
@@ -10,23 +10,37 @@ const QuestionCard = ({
   totalQuestions,
   totalParas,
 }) => {
-  const [selected, setSelected] = useState(selectedAnswers[question.id] ?? 0);
+  const [selected, setSelected] = useState();
 
   const handleSelected = (answerNo) => {
     setSelected(answerNo === selected ? 0 : answerNo);
   };
-  const setAnswer = (ans) => {
-    setSelectedAnswers((curr) => ({ ...curr, [question.id]: selected }));
-  };
   const handlePrev = () => {
-    setAnswer(selected);
+    setSelectedAnswers((curr) => ({
+      ...curr,
+      [`${paraId}_${question.id}`]: selected,
+    }));
     changeQuestion(-1);
   };
   const handleNext = () => {
-    setAnswer(selected);
+    setSelectedAnswers((curr) => ({
+      ...curr,
+      [`${paraId}_${question.id}`]: selected,
+    }));
     if (totalParas === paraId && totalQuestions === question.id) submitQuiz();
     else changeQuestion(1);
   };
+
+  useEffect(() => {
+    setSelected(
+      selectedAnswers[`${paraId}_${question.id}`] === undefined
+        ? 0
+        : selectedAnswers[`${paraId}_${question.id}`]
+    );
+    return () => {
+      setSelected(0);
+    };
+  }, [question]);
 
   return (
     <div className="question-card">

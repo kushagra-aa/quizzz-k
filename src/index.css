@@ -153,4 +153,7 @@ button:disabled:hover {
   .name-container {
     @apply w-full;
   }
+  .buttons {
+    @apply w-full;
+  }
 }

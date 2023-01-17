@@ -8,9 +8,9 @@ const NameCard = ({ setName }) => {
   };
 
   return (
-    <div className="question-card name-card">
-      <div className="question-container">
-        <h1>Enter Your Name</h1>
+    <div className="para-card name-card">
+      <div className="para-head">
+        <h2>Enter Your Name</h2>
       </div>
       <div className="name-container">
         <input ref={name} type="text" placeholder="name" />
