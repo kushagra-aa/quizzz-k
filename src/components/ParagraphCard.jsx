@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import QuestionCard from "./QuestionCard";
+import Timer from "./Timer";
+import { TEST_TIME } from "../constants";
 
 const ParagraphCard = ({
   question: para,
@@ -8,6 +10,7 @@ const ParagraphCard = ({
   changePara,
   totalParas,
   handleSubmit,
+  timeString
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [isNoPara, setIsNoPara] = useState(false);
@@ -28,8 +31,10 @@ const ParagraphCard = ({
     setIsNoPara(para.paragraph.length === 0);
   }, [para]);
 
+
   return (
     <div className="para-card">
+      <Timer timeString={timeString} />
       {!isNoPara ? (
         <div className="para-head">
           <h2>paragraph</h2>
