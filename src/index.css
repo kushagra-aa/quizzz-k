@@ -49,11 +49,18 @@ input[type="number"] {
 }
 
 .message {
-  @apply text-4xl text-yellow font-bold;
+  @apply text-4xl text-yellow font-bold mb-1;
+}
+.timer-box{
+  @apply bg-pink text-dark font-light w-auto absolute top-0 right-0 px-4 py-2;
 }
 
+.timer-box span{
+font-family: sans-serif;
+@apply font-bold ml-2 text-black;
+}
 .para-card {
-  @apply flex flex-col bg-black w-10/12 h-full py-4;
+  @apply flex flex-col bg-black w-10/12 h-full py-4 relative;
 }
 .para-card > .para-head {
   @apply h-full;
@@ -81,6 +88,18 @@ input[type="number"] {
 }
 .name-card {
   @apply items-center;
+}
+.name-card>.para-head{
+  @apply flex flex-col items-center;
+}
+.name-card>.para-head>h2{
+  @apply text-center;
+}
+.name-card>.para-head>p{
+  @apply w-3/4 text-center text-pink;
+}
+  .name-card>.para-head>p>span{
+  @apply font-bold;
 }
 .name-card > .question-container {
   @apply self-start items-center justify-center;
